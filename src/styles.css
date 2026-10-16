@@ -21,8 +21,8 @@ main{overflow:clip}
 section[id]{scroll-margin-top:94px}
 .mono{font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace;font-size:10px;font-weight:400;line-height:1.55;letter-spacing:.055em;text-transform:uppercase}
 .section-pad{padding-left:var(--gutter);padding-right:var(--gutter)}
-.skip-link{position:fixed;left:24px;top:12px;background:var(--paper);color:var(--bg);padding:14px;z-index:101;transform:translateY(-150%)}
-.skip-link:focus{transform:translateY(0)}
+.skip-link{position:fixed;left:24px;top:12px;background:var(--paper);color:var(--bg);padding:14px;z-index:101;transform:translateY(-150%);clip-path:inset(50%)}
+.skip-link:focus{transform:translateY(0);clip-path:none}
 .site-header{position:absolute;z-index:20;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;height:96px;margin:0 var(--gutter);border-bottom:1px solid var(--line);gap:30px}
 .brand{display:flex;align-items:center;gap:13px;flex-shrink:0}
 .brand-mark{font-weight:900;font-size:27px;letter-spacing:-2px;display:flex;align-items:baseline;position:relative;line-height:1}

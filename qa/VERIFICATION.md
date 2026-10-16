@@ -2,6 +2,20 @@
 
 日期：2026 年 10 月 16 日。
 
+## Prototype 模块新增验收（2026 年 10 月 16 日）
+
+- 在 Why Our Team 与页脚之间加入第 05 章 Prototype，桌面导航及移动菜单入口、章节高亮均已检查。
+- `npm run build` 成功，包含 React / Vue TypeScript 检查与生产构建；未修改原始资料或 `bid.generated.json`，未新增依赖。
+- 最终 `npm test`：9 项全部通过（45.8 秒），包括新增原型交互测试及原有 8 项内容、交互、布局和动态效果检查。
+- 原型测试以键盘 Enter / Space 验证镜头与视图切换，覆盖六个镜头的画面说明、字幕、设置同步、预设示例保持、禁用下载以及完整重置。
+- 检查 `prototype-{1440,1024,768,390}.png`，验证桌面三栏、平板制作面板下移、手机纵向布局和局部分镜滚动。所有宽度均无页面横向溢出、JavaScript 错误或资源 404。
+- Story / Export 视图四种宽度截图保存为 `prototype-story-*.png` / `prototype-export-*.png`，导出摘要显示 48 秒、6 个镜头、MP4、配音语言、嵌入英文字幕及 AI 内容标识。
+- 六幅 SVG 分镜采用同一原创提灯旅人；页面标注 Proposed UI concept / Illustrative storyboard / Original vector illustration，不作为真实生成影片或团队已完成成果。
+- 表单使用独立 label；键盘焦点、减少动态效果模式、正常动画下的 Prototype 导航和镜头切换均通过。修正 Skip to content 在局部截图中露出的问题，保留键盘聚焦时显示。
+- 测试服务改用独立端口 4175，禁止复用已有服务，避免访问本机其他项目。最终测试重跑全部通过；此前遇到的截图文件暂时写入错误未再出现。
+
+以下为原网站交付时的验收记录。
+
 ## 构建与内容
 
 - `npm run content` 成功，从正式英文竞标书提取七位成员、九个阶段和全部实质正文。

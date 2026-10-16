@@ -20,6 +20,8 @@ Satoshi，由 Indian Type Foundry 发布，通过 [Fontshare](https://www.fontsh
 
 ## 其他
 
+Prototype 工作台中的六幅分镜及角色参考均为本项目自行编写的 SVG 矢量插画，源码位于 `src/components/PrototypeFrame.tsx`，无外部图片、模型输出或新增字体。画面使用同一提灯旅人的角色轮廓与原创山谷场景，作为 `The lantern path` 预设故事的概念分镜；大预览、缩略图及角色参考复用同一绘制组件。页面标注 “Illustrative storyboard” 和 “Original vector illustration”，不将其作为已完成影片或 AI 生成结果。原型演示文案与故事数据位于 `src/data/prototype.ts`，属于拟议界面示例，未改写正式竞标书。
+
 `public/favicon.svg` 为本项目自行编写的字母 P 图形。图标和箭头由文字与 CSS 绘制，没有引入额外图标素材。
 
 网站内容来自归档的 P30 竞标书，不使用参考站的电影评论、引文或宣传文案。

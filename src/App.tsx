@@ -9,6 +9,7 @@ import { CinemaImage } from './components/CinemaImage';
 import { ReadingDialog } from './components/ReadingDialog';
 import { TeamGallery } from './components/TeamGallery';
 import { VueTimeline } from './components/VueTimeline';
+import { PrototypeStudio } from './components/PrototypeStudio';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +19,7 @@ const chapters = [
   { id: 'design', label: 'Ideas & design', number: '02' },
   { id: 'timeline', label: 'Timeline', number: '03' },
   { id: 'why-us', label: 'Why our team', number: '04' },
+  { id: 'prototype', label: 'Prototype', number: '05' },
 ];
 const workflow = [
   { title: 'Script & storyboard', tech: 'Transformers · Structured JSON', copy: 'A story premise, genre, language and visual style will become a structured screenplay and storyboard.', image: 0 },
@@ -172,6 +174,11 @@ export default function App() {
         <SectionHeading number="04" eyebrow="Relevant preparation" description={<p>Research related to computer vision and LLMs, combined with dataset preparation, application development and delivery automation.</p>}>WHY OUR TEAM<br />FITS THIS<br />PROJECT<span className="heading-period">.</span></SectionHeading>
         <div className="fit-layout"><figure className="fit-image reveal"><CinemaImage src={fitImage} /><figcaption className="mono">Cinematic reference / Not team-generated work</figcaption></figure><div className="fit-evidence">{bid.fit.map((item, index) => <details key={item.title} className="fit-item" open={index === 0}><summary><span className="mono">0{index + 1}</span><h3>{item.title}</h3><span className="details-icon" /></summary><p>{item.body}</p>{index === 0 && <button className="text-link" onClick={() => setPanel(members[0])}>Ziqian XIONG — profile & projects ↗</button>}{index === 1 && <button className="text-link" onClick={() => setPanel(members[1])}>Yun Xin NG — profile & experience ↗</button>}</details>)}</div></div>
         <div className="conclusion-block reveal"><span className="mono">Conclusion / from the bid</span><Html content={bid.conclusionHtml} /></div>
+      </section>
+
+      <section className="prototype-section section-pad" id="prototype" aria-labelledby="prototype-title">
+        <SectionHeading number="05" eyebrow="Proposed UI concept" description={<><p>Explore a proposed studio interface: shape a story, review six illustrated shots and inspect the planned export settings.</p><span className="small-note">An interactive design concept with a prewritten example. No video or audio is generated.</span></>}><span id="prototype-title">PROTOTYPE<span className="heading-period">.</span></span></SectionHeading>
+        <PrototypeStudio />
       </section>
 
       <footer className="site-footer section-pad"><div className="footer-top mono"><span>P30 / Bid report</span><span>October 15, 2026</span></div><p className="footer-title">FROM PROMPT<br />TO FILM<span>.</span></p><div className="footer-actions"><p>{bid.team}<br /><span>An AI-Empowered Micro-Film Studio</span></p><button className="footer-read" onClick={() => setPanel('full')}>Read full bid <span>↗</span></button></div><div className="footer-bottom mono"><button onClick={() => setPanel('credits')}>Image & type credits ↗</button><a href="https://www.theartofcinema.xyz/" target="_blank" rel="noopener noreferrer">Visual reference: The Art of Cinema ↗</a><a href="#top">Back to top ↑</a></div></footer>
