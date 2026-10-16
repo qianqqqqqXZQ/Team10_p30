@@ -85,6 +85,8 @@ for (const width of [1440, 1024, 768, 390]) {
     await page.screenshot({ path: `qa/hero-${width}.png` });
     await page.locator('#team').scrollIntoViewIfNeeded();
     await page.screenshot({ path: `qa/team-${width}.png` });
+    await page.locator('.scope-heading').evaluate((element) => element.scrollIntoView({ block: 'start', behavior: 'instant' }));
+    await page.screenshot({ path: `qa/design-${width}.png` });
     await page.locator('#timeline').scrollIntoViewIfNeeded();
     await page.screenshot({ path: `qa/timeline-${width}.png` });
     if (width < 768) {

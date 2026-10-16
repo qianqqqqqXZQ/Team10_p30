@@ -125,7 +125,8 @@ details[open]>summary .details-icon::after{transform:rotate(0)}
 .member-index button:hover,.member-index .selected{color:var(--paper);border-color:#d5d5bd}
 .member-index .mono{font-size:9px}
 .design-section{padding-bottom:160px}
-.scope-row{display:grid;grid-template-columns:repeat(3,1fr) 1.2fr;gap:35px;padding:34px 0 45px;border-top:1px solid var(--line);margin-top:10px}
+.scope-heading{border-top:1px solid var(--line);margin-top:10px;padding-top:24px;color:#bcbcb5;font-size:11px}
+.scope-row{display:grid;grid-template-columns:repeat(3,1fr) 1.2fr;gap:35px;padding:24px 0 45px}
 .scope-row>div{display:flex;flex-direction:column;gap:10px}
 .scope-row>div>strong{font-size:65px;font-weight:500;letter-spacing:-.055em;line-height:1.1}
 .scope-row>div>strong>span{font-size:35px}
