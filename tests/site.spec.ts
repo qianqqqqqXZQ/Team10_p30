@@ -89,6 +89,22 @@ for (const width of [1440, 1024, 768, 390]) {
     await page.screenshot({ path: `qa/design-${width}.png` });
     await page.locator('#timeline').scrollIntoViewIfNeeded();
     await page.screenshot({ path: `qa/timeline-${width}.png` });
+    const profile = page.getByRole('button', { name: `${source.members[0].name}, ${source.members[0].role}. Read full profile`, exact: true });
+    for (const kind of ['profile', 'bid'] as const) {
+      await (kind === 'profile' ? profile : page.locator('.header-bid')).click();
+      const dialog = page.getByRole('dialog');
+      await expect(dialog).toBeVisible();
+      const bounds = (await dialog.boundingBox())!;
+      const viewport = page.viewportSize()!;
+      expect(Math.abs(bounds.x + bounds.width / 2 - viewport.width / 2)).toBeLessThan(2);
+      expect(Math.abs(bounds.y + bounds.height / 2 - viewport.height / 2)).toBeLessThan(2);
+      expect(bounds.x).toBeGreaterThan(0);
+      expect(bounds.y).toBeGreaterThan(0);
+      expect(await dialog.locator('.reading-shell').evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true);
+      await page.screenshot({ path: `qa/reading-${kind}-${width}.png` });
+      await dialog.getByRole('button', { name: 'Close reading panel' }).click();
+      await expect(dialog).toHaveCount(0);
+    }
     if (width < 768) {
       await page.evaluate(() => window.scrollTo(0, 0));
       const menu = page.getByRole('button', { name: 'Menu +' });
