@@ -1,0 +1,409 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+% 根据 docs/template/main.tex 的版式与章节结构创建。
+% 正式竞标书；中英文内容同步维护。
+% 中文版对应 bid_P30.tex；修改英文版时必须同步更新本文件。
+% 编译：使用 XeLaTeX，连续编译两次更新目录；Overleaf 配置见根目录 latexmkrc。
+% 成员资料来自 docs/character/；不得用往年成员信息填补未知字段。
+\documentclass[a4paper,12pt]{article}
+% 使用 TeX Live/Overleaf 自带的 Fandol 字体，避免依赖本机中文字体。
+\usepackage[UTF8,scheme=plain,fontset=fandol]{ctex}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage[table]{xcolor}
+\usepackage{needspace}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tocloft}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\figurename}{图}
+\renewcommand{\labelitemi}{\ensuremath{\bullet}}
+\setlength{\headheight}{16pt}
+\addtolength{\headsep}{-2.5pt}
+% 为较难断行的内容预留少量弹性间距，不改变模板页边距。
+\setlength{\emergencystretch}{3em}
+
+% 统一使用本组名称，不沿用往年模板的组号。
+\newcommand{\BidTeam}{UNNC GRP Team202610}
+\newcommand{\BidDate}{2026 年 10 月 15 日}
+\newcommand{\BidHeaderDate}{2026 年 10 月 15 日}
+\newcommand{\PersonalInformation}[2]{%
+  \subsection*{个人信息}
+  \if\relax\detokenize{#1}\relax\else
+  \noindent\textbf{学号：} #1\\
+  \fi
+  \textbf{邮箱：} #2\par
+}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\BidTeam}
+\fancyhead[R]{\BidHeaderDate}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newcommand{\BidProjectCode}{P30}
+\newcommand{\BidProjectName}{“从提示词到影片”——人工智能赋能的微电影工作室}
+\newcommand{\BidTitle}{[\BidProjectCode] 项目竞标书（中文版）}
+\title{\BidTitle}
+\author{\BidTeam}
+\date{\BidDate}
+\hypersetup{pdftitle={[P30] 项目竞标书（中文版）},pdfauthor={UNNC GRP Team202610}}
+
+\begin{document}
+\maketitle
+\thispagestyle{plain}
+\tableofcontents
+\newpage
+
+\section{引言}
+\noindent\textbf{项目：} \BidProjectName
+\par\medskip
+UNNC GRP Team202610 结合了与 P30 相关的视觉模型研究、数据准备、应用开发和视频剪辑经验。Ziqian XIONG 的计算机视觉研究、3D/4D 重建及交互软件项目，为视觉模型实验和集成提供基础；Yun Xin NG 具有数据集准备和模型评估经验；Jinyao LU 的 LLM 相关研究、剧本写作和视频剪辑经历，与故事构思及最终合成相衔接。团队的编程、标注和 CI/CD 技能支撑其余流程。
+
+我们希望开发一套将故事梗概转化为可观看影片的工作室，结合一致的角色、配音、音乐与字幕。首版演示将采用单角色、四至八个镜头和 30--60 秒短片，先验证完整流程，再增加时长与复杂度。
+
+Ziqian XIONG 将协调模型对照、共同学习和早期导师反馈。我们会尽早核查 GPU 能力与模型许可，开展有范围限制的训练／适配实验，并通过支持预览和单镜头重试的网页应用连接各环节。技术检查与观众反馈将共同指导画面连贯、叙事贴合和可靠播放方面的改进。
+
+\newpage
+\section{团队成员}
+本组由七名成员组成，组长为 Ziqian XIONG。团队的互补优势覆盖数据准备与模型评估、算法实现、应用与数据库开发，以及测试部署和用户沟通。我们将以共同的数据规范、模块接口和集成检查连接这些工作，使研究结果能够落实为可演示的软件。以下简介展示支撑项目方案的成员经历，具体职责见任务分配章节。
+
+我们认为，各竞标小组的学术基础大体相当。因此，我们将更强的领导力与积极主动的投入视为本组的竞争优势：由组长指导共同学习、协调决策，成员主动研究不熟悉的方法、及时提出困难并落实反馈。我们将通过集中开发阶段的每周进度复盘、结对方法讨论和早期演示，将这些优势落实到项目推进中；低负荷阶段使用简短异步简报。
+
+\subsection{Ziqian XIONG}
+\PersonalInformation{20721428}{\href{mailto:scyzx7@nottingham.edu.cn}{\nolinkurl{scyzx7@nottingham.edu.cn}}}
+\noindent\textbf{组内角色：} 组长\par
+
+\subsection*{个人简介}
+Ziqian XIONG 是宁波诺丁汉大学计算机科学专业本科生，也是本组组长。他的医学图像分割研究与三维／四维重建工作涉及视觉模型实现、对比实验和工程集成，4DGS 工具与 MomoFocus 应用还提供了交互式软件开发经验。对于 P30，这些背景可为学习、比较视频生成与角色一致性方法，并将其连接到工作室应用提供基础。个人网站：\url{https://qqqqqprofile.vercel.app/}。
+
+\subsection*{实习经历}
+\begin{itemize}
+  \item \textbf{Pony.ai 算法实习（2026 年 7--9 月）：} 在人工智能部调研 VGGT 相关三维／四维重建方法，针对既有 DA3／3D Gaussian Splatting 流水线开展多视角几何与深度估计对比，完成方案验证、工程集成及原有重建流程替换。另编写智能体辅助开发工作流程文档。
+\end{itemize}
+
+\subsection*{项目经历}
+\begin{itemize}
+  \item \textbf{4DGS-Edit-and-Compare（2026 年 7--9 月）：} 独立开发 4D Gaussian Splatting 点云编辑与对比工具，支持选定区域的旋转、平移和删除，支持多点云编辑、对比与量化评估。\textbf{技术栈：} 后端采用 Python 与 Flask，交互前端采用 JavaScript、Three.js 和 WebGL，使用 NumPy 与 SciPy 进行数值处理、PyTorch 与 plyfile 处理点云文件，并提供 Docker 打包配置，该工具在 Pony.ai 实习期间独立开发，个人网站记载其已被公司使用。\href{https://github.com/qianqqqqqXZQ/4DGS-Edit-and-Compare}{项目仓库}。
+  \item \textbf{MomoFocus（2026 年 9--10 月）：} 开发整合待办事项、备忘录与番茄钟的个人效率应用。\textbf{技术栈：} 界面采用 React、TypeScript 和 CSS，桌面壳采用 Electron，使用 Vite 进行开发与前端构建、electron-builder 进行桌面打包；通过 localStorage 在本地持久化数据，并使用 dnd-kit 实现列表拖拽排序，提供了交互式应用开发与桌面交付经验。\href{https://github.com/qianqqqqqXZQ/MomoFocus}{项目仓库}。
+\end{itemize}
+
+\subsection*{科研经历}
+\begin{itemize}
+  \item \textbf{医学图像分割研究：} 实现、调试 CNN--Transformer 组件，准备和检查数据集，并以 Dice、IoU 及推理速度评估效果。\textbf{技术栈：} Python、PyTorch，以及 OpenMMLab 的 MMSegmentation、MMCV 和 MMEngine。相关论文目前以其为第二作者投稿至 CVIU。
+  \item \textbf{动态双分支神经网络研究：} 正在研究面向关键词识别与说话人验证的多任务网络，探索 early exit 调度与 FPGA 资源再分配。网络设计、调度及资源分配策略仍处于评估阶段。
+\end{itemize}
+
+\subsection*{技能}
+\begin{itemize}
+  \item \textbf{编程语言：} Python、C/C++、Java、Haskell、JavaScript、TypeScript、Lean 和 Verilog。
+  \item \textbf{数据库：} MySQL。
+  \item \textbf{研究与实现：} PyTorch、OpenMMLab（MMSegmentation、MMCV、MMEngine）、CNN--Transformer 模型、数据预处理与模型对比评估，以及检索增强生成（RAG）。
+  \item \textbf{应用开发：} HTML、CSS、React、Electron、Vite、Flask、Three.js/WebGL、NumPy 和 SciPy。
+  \item \textbf{工程与文档：} Docker 打包、electron-builder，以及智能体辅助开发工作流程的技术文档编写，包括 harness 与 loop engineering。
+\end{itemize}
+
+\subsection{Yun Xin NG}
+\PersonalInformation{20709091}{efyyn8@nottingham.edu.cn}
+\noindent\textbf{组内角色：} 成员\par
+
+\subsection*{个人简介}
+Yun Xin NG 是计算机科学专业二年级学生，在马来西亚诺丁汉大学完成第一年学习后，来到宁波诺丁汉大学进行为期一年的交流。她在 YTL AI Labs 实习期间开展多来源提取及基于基准的视觉语言模型选型，机器学习项目则涉及数据集准备和模型训练。对于 P30，这些经历可支持准备文本、视频与参考图数据集、比较候选模型，并记录适配实验和评估结果。
+
+\subsection*{实习经历}
+\begin{itemize}
+  \item \textbf{YTL AI Labs 数据工程实习：} 从网页和 PDF 文档提取数据，根据应用需求筛选开源视觉语言模型，并利用现有基准比较文档理解与文本提取能力，结合基准表现和实际适用性选定模型。
+\end{itemize}
+
+\subsection*{项目经历}
+\begin{itemize}
+  \item \textbf{机器学习项目：} 负责划分训练集与测试集并训练模型，积累数据集准备和实验流程经验。
+  \item \textbf{实习管理系统：} 在大一课程项目中使用 HTML、CSS、Java 和 MySQL 开发应用，将页面开发、应用逻辑与持久化数据相结合。
+\end{itemize}
+
+\subsection*{技能}
+\begin{itemize}
+  \item \textbf{编程语言：} Python、Java 和 C/C++。
+  \item \textbf{Web 与数据库技术：} HTML、CSS 和 MySQL。
+  \item \textbf{数据工程：} 网页与 PDF 数据提取、数据集准备、训练集与测试集划分，以及检索增强生成（RAG）。
+  \item \textbf{模型与 AI 技术：} 模型训练，以及基于基准的视觉语言模型评估与选型。
+\end{itemize}
+
+\subsection{Jinyao LU}
+\PersonalInformation{}{scyl@nottingham.edu.cn}
+\noindent\textbf{组内角色：} 成员\par
+
+\subsection*{个人简介}
+Jinyao LU 是宁波诺丁汉大学计算机科学与人工智能专业本科生，具有 LLM 相关研究和学术写作经历。他在 U 漫社导演部承担舞台剧剧本撰写与后期视频剪辑。对于 P30，这些经历可为审核分镜、检查叙事与剪辑的衔接，以及与团队共同学习音频、字幕和最终合成流程提供基础。
+
+\subsection*{实习经历}
+\begin{itemize}
+  \item \textbf{浙江滴石信息技术有限公司研发部门实习（2024 年 7--8 月）：} 学习软件开发流程与平台业务逻辑，调研 VR/AR 技术在水利行业的应用场景。
+  \item \textbf{浙江中控信息产业股份有限公司实习（2025 年 6--8 月）：} 监控列车运行状态，参与信息发布平台日常维护与运营数据记录，学习调度系统操作。
+\end{itemize}
+
+\subsection*{项目经历}
+\begin{itemize}
+  \item \textbf{抖音 AI 黑客松赛事组织（2026 年 3--4 月）：} 作为校园核心组织成员，负责参赛团队对接与赛事流程协调。
+  \item \textbf{剧本撰写与视频后期（2026 年 3--5 月）：} 在 U 漫社导演部承担舞台剧剧本撰写与后期视频剪辑。这些经历可为检查叙事衔接、审核分镜及生成片段的最终剪辑提供基础。
+\end{itemize}
+
+\subsection*{科研经历}
+\begin{itemize}
+  \item \textbf{AI 相关研究：} 以第一作者身份撰写的大语言模型与自动驾驶相关论文已获国际期刊录用。
+\end{itemize}
+
+\subsection*{技能}
+\begin{itemize}
+  \item \textbf{编程语言：} Python、Java 和 C/C++。
+  \item \textbf{数据库：} MySQL。
+  \item \textbf{技术与基础：} NumPy 数据处理、基础 Web 开发、数据结构、算法和软件工程。
+  \item \textbf{开发与报告工具：} C、Java 编程工具的环境配置与基础用法，以及 Excel 图表和 PowerPoint 演示文稿制作。
+  \item \textbf{技术表达：} 学术写作与科研结果展示。
+\end{itemize}
+
+\subsection{Oswald Yiwen CHONG}
+\PersonalInformation{20792699}{\href{mailto:hcyoc1@nottingham.edu.cn}{\nolinkurl{hcyoc1@nottingham.edu.cn}}}
+\noindent\textbf{组内角色：} 成员\par
+
+\subsection*{个人简介}
+Oswald Yiwen CHONG 来自马来西亚，就读于诺丁汉大学计算机科学与人工智能专业。他通过基于区块链的抱石社交应用积累实际应用开发经验，并具备 GitHub 协作与 CI/CD 技能。对于 P30，这些能力可支持连接生成阶段、任务状态与素材存储，并开展自动检查、失败恢复和可重复部署。
+
+\subsection*{项目经历}
+\begin{itemize}
+  \item \textbf{基于区块链的抱石社交应用：} 开发面向抱石运动（bouldering）、类似 Strava 的社交应用，使用区块链向用户发放徽章，并包含 NFT 相关功能，积累了将去中心化技术用于面向用户的应用的实践经验。
+\end{itemize}
+
+\subsection*{技能}
+\begin{itemize}
+  \item \textbf{编程语言：} Python、Java 和 C/C++。
+  \item \textbf{数据库：} MySQL。
+  \item \textbf{应用技术：} 应用开发、区块链与去中心化技术。
+  \item \textbf{版本控制与协作：} 熟练使用 GitHub 进行版本控制与团队协作。
+  \item \textbf{持续集成与持续部署（CI/CD）：} 能够搭建流水线，支持代码可靠性与软件快速交付。
+\end{itemize}
+
+\subsection{Ziqian ZHANG}
+\PersonalInformation{20721592}{scyzz23@nottingham.edu.cn}
+\noindent\textbf{组内角色：} 成员\par
+
+\subsection*{个人简介}
+Ziqian ZHANG 是计算机科学专业大三学生，具有科研中的图像标注与数据准备经历，并具备 Labelme 和 JSON 数据管理技能。对于 P30，我们将这些经验用于整理角色参考和镜头标注、检查素材一致性，以及记录画面瑕疵和失败案例，支持评估。
+
+\subsection*{科研经历}
+\begin{itemize}
+  \item \textbf{AI-driven Analysis and Optimization of Performance on Magnets：} 参与该科研项目，承担图像标注和数据准备工作。结合这一经历，她在 Labelme 和 JSON 标注与数据管理方面的技能，可为整理图像标签及结构化标注记录提供基础。这些能力有助于准备带标签样例和评估材料，并关注原始图像与标注信息之间的一致性。
+\end{itemize}
+
+\subsection*{技能}
+\begin{itemize}
+  \item \textbf{编程语言：} Python、Java 和 C/C++，具备基础编程能力。
+  \item \textbf{数据库：} MySQL。
+  \item \textbf{数据工具与处理：} Labelme、JSON 标注与数据管理、图像标注和数据集准备。
+\end{itemize}
+
+\subsection{Yue WU}
+\PersonalInformation{20717823}{\href{mailto:sgyyw10@nottingham.edu.cn}{\nolinkurl{sgyyw10@nottingham.edu.cn}}}
+\noindent\textbf{组内角色：} 成员\par
+
+\subsection*{个人简介}
+Yue WU 就读于宁波诺丁汉大学计算机科学专业。编程课程实践与 CCN 研究写作为她提供了实现、文献综述和技术分析经验。对于 P30，这些能力可支持开发和校验结构化剧本及分镜格式、比较剧本生成方法，并与团队共同记录提示和适配实验。
+
+\subsection*{项目经历}
+\begin{itemize}
+  \item \textbf{课程开发实践：} 在软件相关课程项目中运用编程与算法问题解决方法，积累了将计算机科学概念转化为实现的经验。
+\end{itemize}
+
+\subsection*{科研经历}
+\begin{itemize}
+  \item \textbf{CCN 研究与技术写作：} 围绕 \emph{The softwarization and interoperability of CCN} 开展研究与论文写作，积累文献综述、技术分析和学术写作经验。
+\end{itemize}
+
+\subsection*{技能}
+\begin{itemize}
+  \item \textbf{编程语言：} Java、Python、Haskell、C/C++ 和 JavaScript。
+  \item \textbf{Web 与数据库技术：} HTML、CSS、MySQL 和 SQLite。
+  \item \textbf{开发与分析工具：} IntelliJ IDEA、Anaconda、Visual Paradigm、LaTeX 和 MATLAB。
+  \item \textbf{技术分析：} 算法分析、技术文献综述与学术写作。
+\end{itemize}
+
+\subsection{Xinyun HU}
+\PersonalInformation{20720227}{scyxh8@nottingham.edu.cn}
+\noindent\textbf{组内角色：} 成员\par
+
+\subsection*{个人简介}
+Xinyun HU 是计算机科学专业大三学生，具备编程、数据库与 Web 技术基础，并有带 AI 的四子棋项目经历。对于 P30，这些技能可为开发故事输入、进度、预览和下载页面，并连接任务服务、实现单镜头重生成与重试交互提供基础。
+
+\subsection*{项目经历}
+\begin{itemize}
+  \item \textbf{带 AI 的四子棋游戏（2025 年 7 月）：} 项目背景包括 Connect Four Game with AI，可为讨论算法行为与交互应用之间的关系提供实践切入点。
+\end{itemize}
+
+\subsection*{技能}
+\begin{itemize}
+  \item \textbf{编程与查询语言：} Java、Python、C/C++、Haskell、SQL、MATLAB 和 MIPS Assembly。
+  \item \textbf{Web 与数据库技术：} HTML、CSS、MySQL 和 SQLite。
+  \item \textbf{开发工具：} Git、VS Code、Eclipse 和 Visual Paradigm。
+\end{itemize}
+
+\subsection{团队与本项目的匹配点}
+\begin{itemize}
+  \item \textbf{以视觉计算研究支撑生成实验：} Ziqian XIONG 的医学图像分割研究与 4DGS-Edit-and-Compare 项目，为图像处理、模型比较及视觉结果检查提供相关基础。Jinyao LU 的大语言模型相关研究可为剧本生成方法的讨论提供基础；团队将通过文献阅读与受控实验，学习并验证视频生成、角色一致性及叙事对齐方法。
+  \item \textbf{围绕模型建立完整工作流程：} Yun Xin NG 的模型训练与数据集准备、Ziqian ZHANG 的图像／JSON 标注经验，可支撑训练与评估材料。Yue WU 的编程和研究分析背景可用于结构化剧本及方法比较。Xinyun HU 的应用基础、Oswald Yiwen CHONG 的应用与 CI/CD 经验，可支撑交互界面、任务集成、自动检查及部署。
+  \item \textbf{尽早验证生成模型的可行性：} 我们将在已有视觉模型和基准评估经验基础上，尽早试运行 GPU 与模型，并针对选定的 PyTorch、Transformers 和视频处理工具开展学习。先以受控短片验证完整流程，再根据训练／适配证据、质量、耗时与资源情况，持续完善实现与质量。
+\end{itemize}
+
+\newpage
+
+\section{构想与设计}
+\subsection{项目方案}
+我们将开发 Web 创作工作室，将故事构想、题材、语言和视觉风格转化为带配音、背景音乐及内嵌字幕的可下载 MP4。用户可审核结构化分镜与角色参考，查看生成进度、预览片段，并单独重新生成镜头。工作流程连接剧本生成、视频合成、角色一致性、音频生成和自动剪辑。
+
+首个集成里程碑为单角色、四至八个镜头、时长 30--60 秒的短片，交付目标为叙事连贯的一至两分钟影片；更长影片与更多角色将在实测 GPU 容量及输出质量基础上扩展。实现包含轻量微调或 LoRA 等训练与适配工作，并记录可复现的数据集、基座模型、配置及权重版本。交付物包括预处理流水线，剧本、视频、角色一致性及音频模块的模型权重与架构说明，评估报告，集成应用，安装与使用文档，以及维护计划。外部服务集成与自行训练的组件分别记录。
+
+\subsection{技术栈与系统设计}
+\begin{enumerate}
+  \item \textbf{后端开发}\par
+  Python 与 FastAPI 提供项目、分镜、生成、预览、重试和导出 API。Celery 与 Redis 调度 GPU 及合成任务，SQLite 存储项目元数据与任务状态，文件存储保存带版本的媒体素材。每个任务记录输入、模型版本、支持时的随机种子、耗时、输出素材及失败原因。
+
+  PyTorch 与 Hugging Face Transformers/Diffusers 支持剧本和视频模型、轻量适配及参考图条件控制。经过校验的 JSON Schema 定义场景、角色、动作、台词、镜头描述和时长。角色档案结合获授权参考图与一致的描述。以固定评估故事比较参考条件控制、适配方案和未适配基线，使用 OpenCV 检查帧与视觉输出。
+
+  中英文语音合成与音乐生成模块提供台词和符合情绪的背景音轨。FFmpeg 编排通过检查的片段、转场、混音和字幕，ffprobe 验证最终封装、音轨及总时长。失败镜头可独立重试，替换镜头仅使依赖它的合成任务失效。
+
+  \item \textbf{前端开发}\par
+  React 与 TypeScript 实现故事输入、题材／风格及语言控制、分镜与角色审核、任务进度、片段预览、局部重生成和 MP4 下载。API 响应标识处理阶段与失败镜头，使用户可以恢复任务而无需重新生成整部影片。
+\end{enumerate}
+
+\noindent\textbf{评估与交付：}
+项目初期通过资源试运行测量 GPU 显存、运行时间、存储和模型访问条件，再开展适配实验。评估结合衡量提示对齐的 CLIP score、在适用评估集上比较视觉分布的 FID、角色一致性检查、叙事审核、用户偏好评分、推理时延和失败案例分析；任何单一视觉指标均不能独立证明影片质量。交付包含具有使用许可的训练数据、模型与素材记录、可见的 AI 生成内容标识、容器化部署、模型卡，以及更新和故障恢复流程。
+
+\medskip
+\noindent\textbf{核心数据流：}
+故事与风格 $\rightarrow$ 剧本／分镜 JSON $\rightarrow$ 角色参考与视频镜头 $\rightarrow$ 配音／音乐／字幕 $\rightarrow$ FFmpeg 合成 $\rightarrow$ 播放与质量检查 $\rightarrow$ 带生成标识的 MP4 导出。
+
+\newpage
+\section{时间安排、工作流程与任务分配}
+\subsection{时间安排与工作流程}
+Ziqian XIONG 将在集中开发阶段主持每周进度与集成检查，低负荷阶段改用简短异步简报，组织结对方法及代码讨论，并通过早期演示获取导师反馈。组长协助成员拆解不熟悉的任务、协调依赖；各成员主动准备问题、及时报告阻碍，并记录决策与后续行动。
+
+本项目自 2026 年 10 月 21 日启动，于 2027 年 4 月 1 日最终提交，按日期区间、任务负荷和阶段成果安排工作。2026 年 12 月 16 日至 2027 年 1 月 5 日用于进度调整与资料整理。考虑一月至二月可能涉及寒假，1 月 6 日至 2 月 28 日按低负荷安排：每人每周至多一项小型异步任务，并按实际可用时间调整，不安排关键集成、必须完成的训练或参与者试用；学校假期日期以正式通知为准。首版可演示流程与先导实验前移至 12 月 15 日前，三月完成集成与评估，3 月 31 日至 4 月 1 日用于提交检查。
+
+课程节点参照所提供的暂定关键日期表安排，并随课程正式通知调整。
+
+\begin{figure}[!ht]
+\centering
+{\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.3}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|*{7}{c|}}
+\hline
+\textbf{阶段} & \multicolumn{3}{c|}{2026} & \multicolumn{4}{c|}{2027} \\
+\hline
+时间范围 & 10月 & 11月 & 12月 & 1月 & 2月 & 3月 & 4月 \\
+\hline
+1. 需求／GPU／许可 & \cellcolor{cyan!45}21+ & \cellcolor{cyan!45}1--3 & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} \\
+2. 分镜／队列／基线 & \rule{0pt}{1.6ex} & \cellcolor{cyan!45}4--24 & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} \\
+3. 首版短片／适配试验 & \rule{0pt}{1.6ex} & \cellcolor{cyan!45}25+ & \cellcolor{cyan!45}1--15 & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} \\
+进度调整与资料整理 & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \cellcolor{gray!25}16+ & \cellcolor{gray!25}1--5 & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} \\
+4. 轻量复核／文档 & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \cellcolor{yellow!35}6+ & \cellcolor{yellow!35}1+ & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} \\
+5. 工作室／重生成集成 & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \cellcolor{cyan!45}1--9 & \rule{0pt}{1.6ex} \\
+6. 质量／成本／观众试用 & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \cellcolor{cyan!45}10--16 & \rule{0pt}{1.6ex} \\
+7. 发布／报告／演示 & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \cellcolor{cyan!45}17--30 & \rule{0pt}{1.6ex} \\
+提交检查 & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \cellcolor{cyan!45}31 & \cellcolor{cyan!45}1 \\
+\hline
+\end{tabular}}
+}
+\caption{项目进度概览（格内为当月日期；“+”表示延续至月底；浅灰为进度调整与资料整理，浅黄为低负荷阶段）}
+\label{fig:timetable}
+\end{figure}
+
+\begin{itemize}
+  \Needspace{3\baselineskip}
+  \item \textbf{2026 年 10 月 21 日--11 月 3 日}
+    \begin{itemize}
+      \item 明确故事到影片的使用流程、单角色首版范围与输出标准；核对模型和数据许可，试运行剧本、视频、角色参考及音频候选方案，测量 GPU 显存、耗时和存储需求。
+      \item 自 10 月 21 日起准备 GPU 与存储申请；于 10 月 28 日前提交伦理表，覆盖训练素材许可、人像／声音、合成内容披露、知情同意及拟议观众试用，在取得所需批准后开展参与者相关工作。
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{2026 年 11 月 4--24 日}
+    \begin{itemize}
+      \item 于 11 月 5 日前上线团队项目网站，展示项目范围与获授权或合成示例；设计分镜 JSON、角色记录、素材版本、FastAPI 接口及 Celery/Redis 任务状态。
+      \item 准备许可明确的素材与预处理脚本，检查剧本和分镜输出，将视频基线接入任务队列；于 11 月 24 日前由故事生成可播放片段，显示失败任务并支持单镜头重试。同步准备界面骨架与可复用评估样例。
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{2026 年 11 月 25 日--12 月 15 日}
+    \begin{itemize}
+      \item 加入角色参考、初步中／英文语音、音乐、字幕与 FFmpeg 剪辑；于 12 月 15 日前演示单角色、4--8 镜头、30--60 秒可播放短片，并通过开发接口展示镜头替换与重新合成。短片标明 AI 生成，并保留模型及素材版本。
+      \item 并行在实测 GPU 能力内开展有范围限制、许可允许的微调／LoRA 先导试验，准备 Web 工作室骨架、固定测试提示词及评估脚本；于 12 月 10 日前依据届时已有证据提交中期报告，12 月 15 日前归档配置、许可允许的权重、输出及失败样例。
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{2026 年 12 月 16 日--2027 年 1 月 5 日}
+    \begin{itemize}
+      \item 这段时间用于整理资料、收集反馈，并按需要完成前面尚未完成的任务，不安排关键工作或参与者试用；1 月 6 日起继续按低负荷推进。
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{2027 年 1 月 6 日--2 月 28 日}
+    \begin{itemize}
+      \item 以独立小任务复核已保存的先导片段、字幕时序、许可／素材记录及失败样例；基于已有输出起草模型卡、提示词指南与安装说明，不要求新增训练或依赖 GPU 的交付。
+      \item 通过异步简报维护问题清单，整理观众评价表及三月优先事项；一月至二月不设 Web 工作室交付承诺，3 月 1 日恢复集中集成。
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{2027 年 3 月 1--9 日}
+    \begin{itemize}
+      \item 完善已有故事输入、进度、分镜审核、预览和下载页面，将单镜头重生成接入任务服务；检查双语音频与字幕时序、取消、重试，以及替换镜头后受影响素材的更新。
+      \item 于 3 月 9 日前演示故事输入、生成、预览、镜头替换及 MP4 导出；依据十二月先导结果选择模型，保留基线和适配记录，并说明各模块使用训练模型还是外部服务，不再启动新的长周期训练。
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{2027 年 3 月 10--16 日}
+    \begin{itemize}
+      \item 使用预先准备、包含未见题材的提示词，比较基线与适配输出的叙事贴合及角色一致性，报告 CLIP 对齐和适用评估集上的 FID；开展获准观众试用，记录偏好与音画失败。
+      \item 并行测量时延、成功率、GPU 占用、每条影片成本、队列负载、取消与恢复；于 3 月 16 日前依据实测质量／资源评估一至两分钟连贯影片目标，并记录与导师商定的范围调整。
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{2027 年 3 月 17--30 日}
+    \begin{itemize}
+      \item 3 月 17 日起冻结功能与模型，于 3 月 23 日前回归代表性提示词、双语字幕、局部重生成及播放，并在新环境验证 GPU 部署；补齐模型卡、许可允许的权重获取、API 及维护／恢复说明。
+      \item 3 月 24--30 日按实际生成耗时排练故事到 MP4 的演示，明确标记备用影片，于 3 月 30 日前完成应用、最终报告、许可允许的模型包、评估记录及文档。
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{2027 年 3 月 31 日--4 月 1 日}
+    \begin{itemize}
+      \item 核对发布包、报告与文档的一致性、文件命名、权限及回执，于 4 月 1 日前提交团队最终报告与软件；准备后续课程提交所需的演示、展示及宣传素材。
+    \end{itemize}
+
+\end{itemize}
+
+\clearpage
+
+\subsection{任务分配}
+我们根据已有经历和兴趣安排以下分工，遇到不熟悉的方法时共同学习，并通过进度讨论和导师反馈调整任务。
+\begin{itemize}
+  \item \textbf{Ziqian XIONG：} 协调团队、导师沟通和 GPU 安排，结合视觉计算与集成经历指导系统设计、视频模型实验及角色一致性检查。
+  \item \textbf{Yun Xin NG：} 结合数据准备和模型评估经历，准备文本、视频与参考图数据集，比较候选模型，并支持训练与评估。
+  \item \textbf{Jinyao LU：} 结合剧本撰写和视频剪辑经历，审核分镜、开发音频、字幕与最终合成流程，并组织演示故事和观众反馈。
+  \item \textbf{Oswald Yiwen CHONG：} 开发后端任务与素材存储，连接各生成阶段，并支持失败恢复、自动检查和部署。
+  \item \textbf{Ziqian ZHANG：} 结合标注和数据准备经历，整理角色参考与镜头标注、检查素材一致性，并记录画面瑕疵和失败案例。
+  \item \textbf{Yue WU：} 开发并校验结构化剧本与分镜格式，比较剧本生成方法，并与团队共同记录提示和适配实验。
+  \item \textbf{Xinyun HU：} 开发故事输入、风格选择、进度、预览和下载页面，对接任务服务，并检查单镜头重生成与重试交互。
+\end{itemize}
+
+Ziqian XIONG 与 Yun Xin NG 共同开展模型实验，Yue WU 与 Jinyao LU 核查剧本、镜头和声音的衔接；不熟悉的生成与剪辑工具通过小规模共同实验学习。
+
+\clearpage
+\section{结论}
+本组以计算机视觉与大语言模型相关研究、数据集准备、应用开发及自动化交付能力为基础，将通过针对性学习和实验，回应本项目对连贯故事和可靠文本到影片流程的共同要求。我们将尽早验证模型与 GPU 可行性，展示受控短片，再通过技术检查和观众反馈指导迭代。通过分阶段实现与导师审核，交付可以生成、检查、在支持条件下复现，并完整演示创作成果的应用。
+
+我们希望以扎实的学术准备为基础，通过更强的领导与指导能力、主动学习和持续跟进，成为能够推动项目稳步完成的团队。
+
+\end{document}

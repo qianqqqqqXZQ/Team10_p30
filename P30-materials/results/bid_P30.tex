@@ -1,0 +1,406 @@
+% !TeX program = pdflatex
+% !TeX encoding = UTF-8
+% 根据 docs/template/main.tex 的版式与章节结构创建。
+% 正式竞标书；中英文内容同步维护。
+% 编译：使用 pdfLaTeX，连续编译两次更新目录。
+% 成员资料来自 docs/character/；不得用往年成员信息填补未知字段。
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage[table]{xcolor}
+\usepackage{needspace}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tocloft}
+\renewcommand{\labelitemi}{\ensuremath{\bullet}}
+\setlength{\headheight}{14.5pt}
+\addtolength{\headsep}{-2.5pt}
+% Allow a little extra spacing on difficult lines without changing template margins.
+\setlength{\emergencystretch}{3em}
+
+% 统一使用本组名称，不沿用往年模板的组号。
+\newcommand{\BidTeam}{UNNC GRP Team202610}
+\newcommand{\BidDate}{October 15, 2026}
+\newcommand{\BidHeaderDate}{October 15, 2026}
+\newcommand{\PersonalInformation}[2]{%
+  \subsection*{Personal Information}
+  \if\relax\detokenize{#1}\relax\else
+  \noindent\textbf{Student ID:} #1\\
+  \fi
+  \textbf{Email:} #2\par
+}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\BidTeam}
+\fancyhead[R]{\BidHeaderDate}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newcommand{\BidProjectCode}{P30}
+\newcommand{\BidProjectName}{``From Prompt to Film'' --- An AI-Empowered Micro-Film Studio}
+\newcommand{\BidTitle}{Bid for [\BidProjectCode]}
+\title{\BidTitle}
+\author{\BidTeam}
+\date{\BidDate}
+\hypersetup{pdftitle={Bid for [P30]},pdfauthor={UNNC GRP Team202610}}
+
+\begin{document}
+\maketitle
+\thispagestyle{plain}
+\tableofcontents
+\newpage
+
+\section{Introduction}
+\noindent\textbf{Project:} \BidProjectName
+\par\medskip
+UNNC GRP Team202610 combines visual-model research, data preparation, application development, and video-editing experience relevant to P30. Ziqian XIONG's computer-vision research, 3D/4D reconstruction work, and interactive software projects provide a starting point for visual-model experiments and integration. Yun Xin NG brings dataset preparation and model evaluation, while Jinyao LU's LLM-related research, scriptwriting, and video editing connect with story development and final composition. The team's programming, annotation, and CI/CD skills support the wider workflow.
+
+We want to build a studio that turns a story premise into a watchable film with consistent characters, voiceover, music, and subtitles. Our initial demonstration will use one character and four to eight shots in a 30--60-second film, allowing us to test the complete process before increasing duration and complexity.
+
+Ziqian XIONG will coordinate model comparisons, shared learning, and early supervisor feedback. We will check GPU capacity and model licences early, develop bounded training/adaptation experiments, and connect the results through a web application with preview and shot-level retry. Technical checks and viewer feedback will guide improvements to visual coherence, narrative alignment, and reliable playback.
+
+\newpage
+\section{Teammates}
+Our seven-member team, led by Ziqian XIONG, combines data preparation and model evaluation, algorithm implementation, application and database development, and testing, deployment, and user communication. We will connect these strengths through shared data definitions, module interfaces, and integration reviews so that experimental results become demonstrable software. The following profiles present the experience supporting our project plan; responsibilities are set out in the work-distribution section.
+
+We believe that the bidding groups have broadly comparable academic foundations. We therefore see stronger leadership and proactive engagement as our competitive advantage: a leader who can guide shared learning and coordinate decisions, and members willing to investigate unfamiliar methods, raise difficulties early, and follow through on feedback. We will put this into practice through weekly progress reviews during concentrated development, paired method discussions, and early demonstrations; the low-workload period will use brief asynchronous check-ins.
+
+\subsection{Ziqian XIONG}
+\PersonalInformation{20721428}{\href{mailto:scyzx7@nottingham.edu.cn}{\nolinkurl{scyzx7@nottingham.edu.cn}}}
+\noindent\textbf{Group role:} Leader\par
+
+\subsection*{Introduction}
+Ziqian XIONG is a Computer Science undergraduate at UNNC and our team leader. His medical image segmentation research and 3D/4D reconstruction work provide experience in visual-model implementation, comparative experiments, and engineering integration. His 4DGS tool and MomoFocus application also add interactive software-development experience. For P30, this background provides a basis for learning and comparing video-generation and character-consistency methods and connecting them to the studio application. Personal website: \url{https://qqqqqprofile.vercel.app/}.
+
+\subsection*{Internship Experience}
+\begin{itemize}
+  \item \textbf{Pony.ai algorithm internship (July--September 2026):} In the AI department, investigated VGGT-related 3D/4D reconstruction methods and compared multi-view geometry and depth estimation against an existing DA3/3D Gaussian Splatting pipeline. Completed feasibility validation and engineering integration, replacing the original reconstruction workflow. Also wrote documentation on agent-assisted development workflows.
+\end{itemize}
+
+\subsection*{Project Experience}
+\begin{itemize}
+  \item \textbf{4DGS-Edit-and-Compare (July--September 2026):} Independently developed a 4D Gaussian Splatting point-cloud editing and comparison tool. It supports rotation, translation, and deletion of selected regions, editing and comparing multiple point clouds, and quantitative evaluation. \textbf{Technology stack:} Python/Flask for the backend, JavaScript/Three.js/WebGL for the interactive frontend, NumPy/SciPy for numerical processing, PyTorch/plyfile for point-cloud file handling, and Docker for packaging. Developed independently during the Pony.ai internship, the tool is reported on his website as being used by the company. \href{https://github.com/qianqqqqqXZQ/4DGS-Edit-and-Compare}{Project repository}.
+  \item \textbf{MomoFocus (September--October 2026):} Developed a personal productivity application integrating to-do lists, notes, and a Pomodoro timer. \textbf{Technology stack:} React, TypeScript, and CSS for the interface; Electron for the desktop shell; Vite for development and frontend builds; and electron-builder for desktop packaging. The implementation uses localStorage for local persistence and dnd-kit for sortable lists, providing relevant experience in interactive application development and desktop delivery. \href{https://github.com/qianqqqqqXZQ/MomoFocus}{Project repository}.
+\end{itemize}
+
+\subsection*{Research Experience}
+\begin{itemize}
+  \item \textbf{Medical image segmentation research:} Implemented and debugged CNN--Transformer components; prepared and checked datasets; evaluated Dice, IoU, and inference speed. \textbf{Technology stack:} Python, PyTorch, and OpenMMLab's MMSegmentation, MMCV, and MMEngine. A related paper is under submission to CVIU with him as second author.
+  \item \textbf{Dynamic dual-branch neural network research:} Investigating a multi-task network for keyword spotting and speaker verification, with early-exit scheduling and FPGA resource reallocation. Network design, scheduling, and resource-allocation strategies remain under evaluation.
+\end{itemize}
+
+\subsection*{Skill Set}
+\begin{itemize}
+  \item \textbf{Programming languages:} Python, C/C++, Java, Haskell, JavaScript, TypeScript, Lean, and Verilog.
+  \item \textbf{Databases:} MySQL.
+  \item \textbf{Research and implementation:} PyTorch; OpenMMLab (MMSegmentation, MMCV, and MMEngine); CNN--Transformer models; data preprocessing and comparative model evaluation; Retrieval-Augmented Generation (RAG).
+  \item \textbf{Application development:} HTML, CSS, React, Electron, Vite, Flask, Three.js/WebGL, NumPy, and SciPy.
+  \item \textbf{Engineering and documentation:} Docker packaging, electron-builder, and technical documentation for agent-assisted development workflows, including harness and loop engineering.
+\end{itemize}
+
+\subsection{Yun Xin NG}
+\PersonalInformation{20709091}{efyyn8@nottingham.edu.cn}
+\noindent\textbf{Group role:} Member\par
+
+\subsection*{Introduction}
+Yun Xin NG is a second-year Computer Science student on a one-year exchange at UNNC after completing her first year at the University of Nottingham Malaysia. Her YTL AI Labs internship involved multi-source extraction and benchmark-based vision-language model selection; her machine learning projects involved dataset preparation and model training. For P30, these experiences support preparing text, video, and reference-image datasets, comparing candidate models, and recording adaptation and evaluation results.
+
+\subsection*{Internship Experience}
+\begin{itemize}
+  \item \textbf{YTL AI Labs data-engineering internship:} Extracted data from web pages and PDF documents, shortlisted open-source vision-language models against application needs, and compared document-understanding and text-extraction capabilities using existing benchmarks. Selected a model by considering both benchmark performance and practical suitability.
+\end{itemize}
+
+\subsection*{Project Experience}
+\begin{itemize}
+  \item \textbf{Machine learning project:} Prepared training/test splits and trained models, gaining experience in dataset preparation and the experimental workflow.
+  \item \textbf{Internship Management System:} Developed a first-year course application using HTML, CSS, Java, and MySQL, connecting page development with application logic and persistent data.
+\end{itemize}
+
+\subsection*{Skill Set}
+\begin{itemize}
+  \item \textbf{Programming languages:} Python, Java, and C/C++.
+  \item \textbf{Web and database technologies:} HTML, CSS, and MySQL.
+  \item \textbf{Data engineering:} Data extraction from web pages and PDFs, dataset preparation, training/test splitting, and Retrieval-Augmented Generation (RAG).
+  \item \textbf{Models and AI technologies:} Model training and benchmark-based vision-language model evaluation and selection.
+\end{itemize}
+
+\subsection{Jinyao LU}
+\PersonalInformation{}{scyl@nottingham.edu.cn}
+\noindent\textbf{Group role:} Member\par
+
+\subsection*{Introduction}
+Jinyao LU is a Computer Science and Artificial Intelligence undergraduate at UNNC with LLM-related research and academic-writing experience. In the U Man Society directing department, he wrote stage-play scripts and edited videos in post-production. For P30, these experiences provide a basis for reviewing storyboards, checking the connection between narrative and editing, and learning the audio, subtitle, and final-composition workflow with the team.
+
+\subsection*{Internship Experience}
+\begin{itemize}
+  \item \textbf{R\&D internship at Zhejiang Dishi Information Technology (July--August 2024):} Learned the software-development workflow and platform business logic; investigated VR/AR applications in the water sector.
+  \item \textbf{Internship at Zhejiang Zhongkong Information Industry (June--August 2025):} Monitored train status, participated in routine maintenance of an information-publishing platform and operational data recording, and learned to operate the dispatch system.
+\end{itemize}
+
+\subsection*{Project Experience}
+\begin{itemize}
+  \item \textbf{Douyin AI hackathon organisation (March--April 2026):} Served on the campus core organising team, coordinating participating teams and event processes.
+  \item \textbf{Scriptwriting and video post-production (March--May 2026):} Wrote stage-play scripts and edited videos in the U Man Society directing department. This experience provides a basis for reviewing narrative flow, storyboards, and the final editing of generated clips.
+\end{itemize}
+
+\subsection*{Research Experience}
+\begin{itemize}
+  \item \textbf{AI research:} First author of a paper on LLMs and autonomous driving accepted by an international journal.
+\end{itemize}
+
+\subsection*{Skill Set}
+\begin{itemize}
+  \item \textbf{Programming languages:} Python, Java, and C/C++.
+  \item \textbf{Databases:} MySQL.
+  \item \textbf{Technologies and foundations:} NumPy data processing, basic web development, data structures, algorithms, and software engineering.
+  \item \textbf{Development and reporting tools:} Environment setup and basic use of C and Java programming tools; Excel charts and PowerPoint presentations.
+  \item \textbf{Technical communication:} Academic writing and presentation of research findings.
+\end{itemize}
+
+\subsection{Oswald Yiwen CHONG}
+\PersonalInformation{20792699}{\href{mailto:hcyoc1@nottingham.edu.cn}{\nolinkurl{hcyoc1@nottingham.edu.cn}}}
+\noindent\textbf{Group role:} Member\par
+
+\subsection*{Introduction}
+Oswald Yiwen CHONG is from Malaysia and studies Computer Science with Artificial Intelligence at the University of Nottingham. His blockchain-based bouldering social application provides practical application-development experience, complemented by GitHub collaboration and CI/CD skills. For P30, these capabilities support connecting generation stages, task states, and asset storage, with automated checks, failure recovery, and repeatable deployment.
+
+\subsection*{Project Experience}
+\begin{itemize}
+  \item \textbf{Blockchain-based bouldering social application:} Developed a Strava-like social application for bouldering, using blockchain to award user badges and incorporating NFT-related functionality. This provided practical experience in applying decentralised technology to a user-facing application.
+\end{itemize}
+
+\subsection*{Skill Set}
+\begin{itemize}
+  \item \textbf{Programming languages:} Python, Java, and C/C++.
+  \item \textbf{Databases:} MySQL.
+  \item \textbf{Application technologies:} Application development, blockchain, and decentralised technologies.
+  \item \textbf{Version control and collaboration:} Proficient use of GitHub for version control and team collaboration.
+  \item \textbf{Continuous integration and continuous deployment (CI/CD):} Able to set up pipelines that support code reliability and rapid software delivery.
+\end{itemize}
+
+\subsection{Ziqian ZHANG}
+\PersonalInformation{20721592}{scyzz23@nottingham.edu.cn}
+\noindent\textbf{Group role:} Member\par
+
+\subsection*{Introduction}
+Ziqian ZHANG is a third-year Computer Science student with research experience in image annotation and data preparation, alongside Labelme and JSON data-management skills. For P30, we will adapt this experience to organising character references and shot annotations, checking asset consistency, and recording visual artifacts and failed cases for evaluation.
+
+\subsection*{Research Experience}
+\begin{itemize}
+  \item \textbf{AI-driven Analysis and Optimization of Performance on Magnets:} Participated in this research project, contributing image annotation and data preparation. Alongside this experience, her skills in Labelme and JSON annotation/data management provide a foundation for organising image labels and structured annotation records. These capabilities can support the preparation of labelled examples and evaluation materials, with attention to consistency between source images and their annotations.
+\end{itemize}
+
+\subsection*{Skill Set}
+\begin{itemize}
+  \item \textbf{Programming languages:} Python, Java, and C/C++ at a foundational level.
+  \item \textbf{Databases:} MySQL.
+  \item \textbf{Data tools and processing:} Labelme, JSON annotation and data management, image annotation, and dataset preparation.
+\end{itemize}
+
+\subsection{Yue WU}
+\PersonalInformation{20717823}{\href{mailto:sgyyw10@nottingham.edu.cn}{\nolinkurl{sgyyw10@nottingham.edu.cn}}}
+\noindent\textbf{Group role:} Member\par
+
+\subsection*{Introduction}
+Yue WU studies Computer Science at UNNC. Her programming coursework and CCN research writing provide experience in implementation, literature review, and technical analysis. For P30, these capabilities support developing and checking structured screenplay and storyboard formats, comparing script-generation approaches, and documenting prompt and adaptation experiments with the team.
+
+\subsection*{Project Experience}
+\begin{itemize}
+  \item \textbf{Coursework development:} Applied programming and algorithmic problem-solving in software-related course projects, building experience in translating computing concepts into implementations.
+\end{itemize}
+
+\subsection*{Research Experience}
+\begin{itemize}
+  \item \textbf{CCN research and technical writing:} Worked on research and paper writing concerning \emph{The softwarization and interoperability of CCN}, developing literature-review, technical-analysis, and academic-writing experience.
+\end{itemize}
+
+\subsection*{Skill Set}
+\begin{itemize}
+  \item \textbf{Programming languages:} Java, Python, Haskell, C/C++, and JavaScript.
+  \item \textbf{Web and database technologies:} HTML, CSS, MySQL, and SQLite.
+  \item \textbf{Development and analysis tools:} IntelliJ IDEA, Anaconda, Visual Paradigm, LaTeX, and MATLAB.
+  \item \textbf{Technical analysis:} Algorithm analysis, technical literature review, and academic writing.
+\end{itemize}
+
+\subsection{Xinyun HU}
+\PersonalInformation{20720227}{scyxh8@nottingham.edu.cn}
+\noindent\textbf{Group role:} Member\par
+
+\subsection*{Introduction}
+Xinyun HU is a third-year Computer Science student with programming, database, and web-technology foundations, alongside an AI-enabled Connect Four project. For P30, these skills provide a basis for building story-input, progress, preview, and download pages and connecting them to task services, including shot regeneration and retry interactions.
+
+\subsection*{Project Experience}
+\begin{itemize}
+  \item \textbf{Connect Four Game with AI (July 2025):} The supplied project background includes an AI-enabled Connect Four game, providing a relevant setting for discussing the interaction between algorithmic behaviour and an interactive application.
+\end{itemize}
+
+\subsection*{Skill Set}
+\begin{itemize}
+  \item \textbf{Programming and query languages:} Java, Python, C/C++, Haskell, SQL, MATLAB, and MIPS Assembly.
+  \item \textbf{Web and database technologies:} HTML, CSS, MySQL, and SQLite.
+  \item \textbf{Development tools:} Git, VS Code, Eclipse, and Visual Paradigm.
+\end{itemize}
+
+\subsection{Why Our Team Fits This Project}
+\begin{itemize}
+  \item \textbf{Visual-computing research to support generative experiments:} Ziqian XIONG's medical image segmentation research and 4DGS-Edit-and-Compare project provide relevant preparation in image processing, model comparison, and inspection of visual outputs. Jinyao LU's LLM-related research provides a foundation for discussing script-generation methods. We will learn and validate video generation, character consistency, and narrative alignment through literature review and controlled experiments.
+  \item \textbf{A complete workflow around the models:} Yun Xin NG's model training and dataset preparation and Ziqian ZHANG's image/JSON annotation experience can support training and evaluation materials. Yue WU's programming and research-analysis background can support structured scripts and method comparison. Xinyun HU's application foundations and Oswald Yiwen CHONG's application and CI/CD experience support the user interface, task integration, automated checks, and deployment.
+  \item \textbf{Early validation of generative-model feasibility:} We will build on our visual-model and benchmarking experience through an early GPU/model trial and targeted learning of the selected PyTorch, Transformers, and video-processing tools. The first milestone will demonstrate a controlled short-film workflow; training/adaptation evidence, quality, runtime, and resource findings will guide subsequent implementation and quality improvements.
+\end{itemize}
+
+\newpage
+
+\section{Ideas \& Design}
+\subsection{Project Proposal}
+We will develop a web studio that turns a story premise, genre, language, and visual style into a downloadable MP4 with voiceover, background music, and embedded subtitles. Users will review structured storyboards and character references, follow generation progress, preview clips, and regenerate individual shots. The workflow will connect script generation, video synthesis, character consistency, audio generation, and automated editing.
+
+The first integrated milestone will be a single-character, four-to-eight-shot film lasting 30--60 seconds. The delivery target is a coherent one-to-two-minute film; longer films and additional characters will build on measured GPU capacity and output quality. Training and adaptation will form part of the implementation, with lightweight fine-tuning or LoRA and reproducible records of datasets, base models, configurations, and weight versions. Deliverables will include the preprocessing pipeline, model weights and architecture descriptions for the script, video, character-consistency, and audio modules, evaluation reports, the integrated application, installation and usage documentation, and a maintenance plan. External service integration will be documented separately from trained components.
+
+\subsection{Technology Stack \& System Design}
+\begin{enumerate}
+  \item \textbf{Back-end Development}\par
+  Python and FastAPI will expose project, storyboard, generation, preview, retry, and export APIs. Celery and Redis will queue GPU and composition tasks; SQLite will store project metadata and task states, while file storage will hold versioned media assets. Each task will record its inputs, model version, seed where supported, timing, output assets, and failure reason.
+
+  PyTorch and Hugging Face Transformers/Diffusers will support script and video models, lightweight adaptation, and reference-image conditioning. A validated JSON schema will define scenes, characters, actions, dialogue, camera descriptions, and durations. Character profiles will combine authorised reference images and consistent descriptions. Reference conditioning and adaptation will be compared against unadapted baselines using fixed evaluation stories. OpenCV will check frames and visual outputs.
+
+  Mandarin/English speech synthesis and music-generation modules will supply dialogue and emotional background tracks. FFmpeg will assemble approved clips, transitions, mixed audio, and subtitles, and ffprobe will verify the final container, tracks, and duration. Failed shots will be retried independently; replacing a shot will invalidate only the dependent composition tasks.
+
+  \item \textbf{Front-end Development}\par
+  React and TypeScript will provide story entry, genre/style and language controls, storyboard and character review, task progress, clip previews, local regeneration, and MP4 download. API responses will identify processing stages and failed shots so that users can resume work without restarting the entire film.
+\end{enumerate}
+
+\noindent\textbf{Evaluation and delivery:}
+The opening resource trial will measure GPU memory, runtime, storage, and model access before adaptation experiments. Evaluation will combine CLIP score for prompt alignment, FID for distribution-level visual comparison on suitable evaluation sets, character-consistency checks, narrative review, user preference ratings, inference latency, and failure-case analysis. Neither visual metric alone will establish film quality. Licensed training data, model and asset records, visible AI-generated-content marks, containerised deployment, model cards, and documented update and recovery procedures will support delivery.
+
+\medskip
+\noindent\textbf{Core data flow:}
+Story and style $\rightarrow$ screenplay/storyboard JSON $\rightarrow$ character references and video shots $\rightarrow$ voiceover/music/subtitles $\rightarrow$ FFmpeg composition $\rightarrow$ playback and quality checks $\rightarrow$ marked MP4 export.
+
+\newpage
+\section{Timeline \& Workflow and Work Distribution}
+\subsection{Timeline \& Workflow}
+Ziqian XIONG will lead weekly progress and integration reviews during concentrated development and use brief asynchronous check-ins in the low-workload period. Paired discussions of methods and code, and early demonstrations, will support supervisor feedback. The leader will help members break down unfamiliar tasks and resolve dependencies. Each member will prepare questions, report blockers early, and record decisions and follow-up actions.
+
+The project runs from 21 October 2026 to final submission on 1 April 2027, with work organised by date ranges, workload, and demonstrable outputs. We use 16 December 2026--5 January 2027 to review documents and finish earlier tasks as needed. As January and February may overlap the winter vacation, 6 January--28 February is a low-workload period: at most one small asynchronous task per member per week, adjusted to availability, with no critical integration, required training runs, or participant trials. University holiday dates remain subject to formal notices. We bring the first demonstrable workflow and pilot experiments forward to 15 December, complete integration and evaluation in March, and reserve 31 March--1 April for submission checks.
+
+Course milestones follow the supplied tentative key-dates table, subject to formal course notices.
+
+\begin{figure}[!ht]
+\centering
+{\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.3}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|*{7}{c|}}
+\hline
+\textbf{Phase} & \multicolumn{3}{c|}{2026} & \multicolumn{4}{c|}{2027} \\
+\hline
+Planning window & Oct & Nov & Dec & Jan & Feb & Mar & Apr \\
+\hline
+1. Requirements / GPU / licences & \cellcolor{cyan!45}21+ & \cellcolor{cyan!45}1--3 & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} \\
+2. Storyboard / queue / baseline & \rule{0pt}{1.6ex} & \cellcolor{cyan!45}4--24 & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} \\
+3. First film / adaptation pilots & \rule{0pt}{1.6ex} & \cellcolor{cyan!45}25+ & \cellcolor{cyan!45}1--15 & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} \\
+Review documents / finish earlier tasks & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \cellcolor{gray!25}16+ & \cellcolor{gray!25}1--5 & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} \\
+4. Light review / documentation & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \cellcolor{yellow!35}6+ & \cellcolor{yellow!35}1+ & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} \\
+5. Studio / regeneration integration & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \cellcolor{cyan!45}1--9 & \rule{0pt}{1.6ex} \\
+6. Quality / cost / viewer trials & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \cellcolor{cyan!45}10--16 & \rule{0pt}{1.6ex} \\
+7. Release / report / demo & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \cellcolor{cyan!45}17--30 & \rule{0pt}{1.6ex} \\
+Submission checks & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \rule{0pt}{1.6ex} & \cellcolor{cyan!45}31 & \cellcolor{cyan!45}1 \\
+\hline
+\end{tabular}}
+}
+\caption{Project timetable (dates within each month; \texttt{+} means through month end; grey: document review / earlier tasks; amber: low workload)}
+\label{fig:timetable}
+\end{figure}
+
+\begin{itemize}
+  \Needspace{3\baselineskip}
+  \item \textbf{21 October -- 3 November 2026}
+    \begin{itemize}
+      \item Agree the story-to-film workflow, single-character first scope, and output standards. Check model and data licences, trial script, video, character-reference, and audio candidates, and measure GPU memory, runtime, and storage needs.
+      \item Prepare GPU/storage requests from 21 October. Submit ethics forms by 28 October, covering licensed training assets, faces/voices, synthetic-content disclosure, consent, and planned viewer trials; begin participant work only after the required approval.
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{4--24 November 2026}
+    \begin{itemize}
+      \item Publish the team project website by 5 November, with the scope and licensed or synthetic examples. Design storyboard JSON, character records, asset versions, FastAPI contracts, and Celery/Redis task states.
+      \item Prepare licensed assets and preprocessing scripts, check screenplay and storyboard output, and connect the video baseline to the task queue. By 24 November, generate a playable clip from a story, show failed tasks, and support shot-level retry. Prepare interface skeletons and reusable evaluation samples in parallel.
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{25 November -- 15 December 2026}
+    \begin{itemize}
+      \item Add character references, initial Mandarin/English voice, music, subtitles, and FFmpeg editing. By 15 December, demonstrate a playable single-character, four-to-eight-shot, 30--60-second film, including shot replacement and recomposition through a development interface. Mark the film as AI-generated and retain model and asset versions.
+      \item In parallel, run a bounded licensed fine-tuning/LoRA pilot within measured GPU capacity and prepare web-studio skeletons, fixed test prompts, and evaluation scripts. Submit the interim report by 10 December, using evidence available then; archive configurations, permitted weights, outputs, and failures by 15 December.
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{16 December 2026 -- 5 January 2027}
+    \begin{itemize}
+      \item Use this time to review documents, collect feedback, and finish earlier tasks as needed; no critical work or participant trials are scheduled. Low-workload activity continues from 6 January.
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{6 January -- 28 February 2027}
+    \begin{itemize}
+      \item Review saved pilot clips, subtitle timing, licence/asset records, and failure examples in small independent tasks. Draft model cards, prompt guidance, and installation notes using existing outputs; require no new training or GPU-dependent deliverable.
+      \item Use asynchronous check-ins to maintain the issue list and prepare viewer-review forms and March priorities. Make no web-studio delivery commitment in January or February; resume concentrated integration on 1 March.
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{1--9 March 2027}
+    \begin{itemize}
+      \item Complete the existing story-input, progress, storyboard-review, preview, and download pages. Connect shot regeneration to the task service; check bilingual audio/subtitle timing, cancellation, retries, and updates to affected assets after replacing a shot.
+      \item By 9 March, demonstrate story entry, generation, preview, shot replacement, and MP4 export. Select models using the December pilot results, retain baseline and adaptation records, and explain which modules use trained models or external services. Add no new long training runs.
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{10--16 March 2027}
+    \begin{itemize}
+      \item Use the prepared prompts, including unseen genres, to compare baseline and adapted outputs for narrative fit and character consistency. Report CLIP alignment and FID on suitable evaluation sets; run approved viewer trials and record preferences and audio/visual failures.
+      \item Measure latency, success rate, GPU use, per-film cost, queue load, cancellation, and recovery in parallel. By 16 March, assess the coherent one-to-two-minute target against measured quality/resources and document any scope adjustment agreed with the supervisor.
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{17--30 March 2027}
+    \begin{itemize}
+      \item Freeze features/models on 17 March, regress representative prompts, bilingual subtitles, local regeneration, and playback, and validate GPU deployment in a fresh environment by 23 March. Complete model cards, permitted weight access, APIs, and maintenance/recovery instructions.
+      \item Use 24--30 March to rehearse the story-to-MP4 demonstration with actual generation timing and clearly labelled backup films. Complete the application, final report, permitted model package, evaluation records, and documentation by 30 March.
+    \end{itemize}
+
+  \Needspace{3\baselineskip}
+  \item \textbf{31 March -- 1 April 2027}
+    \begin{itemize}
+      \item Verify release/report/documentation consistency, filenames, access, and receipts; submit the team final report and software by 1 April. Prepare demonstration, presentation, and promotional assets for later course submissions.
+    \end{itemize}
+
+\end{itemize}
+
+\clearpage
+
+\subsection{Work Distribution}
+We will divide the work according to our relevant experience and interests, help one another learn unfamiliar methods, and adjust tasks through progress discussions and supervisor feedback.
+\begin{itemize}
+  \item \textbf{Ziqian XIONG:} Coordinate the team, supervisor discussions, and GPU planning; guide system design, video-model experiments, and character-consistency checks, drawing on his visual-computing and integration experience.
+  \item \textbf{Yun Xin NG:} Prepare text, video, and reference-image datasets, compare candidate models, and support training and evaluation, drawing on her data-preparation and model-evaluation experience.
+  \item \textbf{Jinyao LU:} Review storyboards, develop the audio, subtitle, and final-composition workflow, and organise demonstration stories and viewer feedback, drawing on his scriptwriting and video-editing experience.
+  \item \textbf{Oswald Yiwen CHONG:} Develop backend tasks and asset storage, connect generation stages, and support failure recovery, automated checks, and deployment.
+  \item \textbf{Ziqian ZHANG:} Organise character references and shot annotations, check asset consistency, and record visual artifacts and failed cases, building on her annotation and data-preparation experience.
+  \item \textbf{Yue WU:} Develop and check structured screenplay and storyboard formats, compare script-generation methods, and document prompt and adaptation experiments with the team.
+  \item \textbf{Xinyun HU:} Build story-input, style-selection, progress, preview, and download pages; connect them to task services and check shot regeneration and retry interactions.
+\end{itemize}
+
+Ziqian XIONG and Yun Xin NG will work together on model experiments; Yue WU and Jinyao LU will check the connection between scripts, shots, and sound. Members will learn unfamiliar generation and editing tools through small joint experiments.
+
+\clearpage
+\section{Conclusion}
+Our team brings research related to computer vision and LLMs together with dataset preparation, application development, and delivery automation. We will extend this preparation through targeted learning and experiments to address the need for both a coherent story and a reliable prompt-to-film workflow. We will test model and GPU feasibility early, demonstrate a controlled short film, and use technical checks and viewer feedback to guide iteration. Through staged implementation and supervisor reviews, we will deliver an application whose creative outputs can be generated, inspected, reproduced where supported, and demonstrated end to end.
+
+Building on our academic preparation, we aim to distinguish our team through stronger leadership and peer guidance, proactive learning, and consistent follow-through throughout the project.
+
+\end{document}
+

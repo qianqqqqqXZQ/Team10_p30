@@ -1,0 +1,107 @@
+[
+  {
+    "local": "images/cinema-01.jpg",
+    "source": "https://www.theartofcinema.xyz/images/1.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "images/cinema-02.jpg",
+    "source": "https://www.theartofcinema.xyz/images/2.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "images/cinema-03.jpg",
+    "source": "https://www.theartofcinema.xyz/images/3.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "images/cinema-04.jpg",
+    "source": "https://www.theartofcinema.xyz/images/4.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "images/cinema-05.jpg",
+    "source": "https://www.theartofcinema.xyz/images/5.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "images/cinema-06.jpg",
+    "source": "https://www.theartofcinema.xyz/images/6.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "images/cinema-07.jpg",
+    "source": "https://www.theartofcinema.xyz/images/7.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "images/cinema-08.jpg",
+    "source": "https://www.theartofcinema.xyz/images/8.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "images/cinema-09.jpg",
+    "source": "https://www.theartofcinema.xyz/images/9.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "images/cinema-10.jpg",
+    "source": "https://www.theartofcinema.xyz/images/10.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "images/cinema-11.jpg",
+    "source": "https://www.theartofcinema.xyz/images/21.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "images/cinema-12.jpg",
+    "source": "https://www.theartofcinema.xyz/images/27.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "fonts/Satoshi-Regular.woff2",
+    "source": "https://cdn.fontshare.com/wf/TTX2Z3BF3P6Y5BQT3IV2VNOK6FL22KUT/7QYRJOI3JIMYHGY6CH7SOIFRQLZOLNJ6/KFIAZD4RUMEZIYV6FQ3T3GP5PDBDB6JY.woff2",
+    "use": "Satoshi by Indian Type Foundry, Fontshare ITF Free Font License."
+  },
+  {
+    "local": "fonts/Satoshi-Medium.woff2",
+    "source": "https://cdn.fontshare.com/wf/P2LQKHE6KA6ZP4AAGN72KDWMHH6ZH3TA/ZC32TK2P7FPS5GFTL46EU6KQJA24ZYDB/7AHDUZ4A7LFLVFUIFSARGIWCRQJHISQP.woff2",
+    "use": "Satoshi by Indian Type Foundry, Fontshare ITF Free Font License."
+  },
+  {
+    "local": "fonts/Satoshi-Bold.woff2",
+    "source": "https://cdn.fontshare.com/wf/LAFFD4SDUCDVQEXFPDC7C53EQ4ZELWQI/PXCT3G6LO6ICM5I3NTYENYPWJAECAWDD/GHM6WVH6MILNYOOCXHXB5GTSGNTMGXZR.woff2",
+    "use": "Satoshi by Indian Type Foundry, Fontshare ITF Free Font License."
+  },
+  {
+    "local": "fonts/Satoshi-Black.woff2",
+    "source": "https://cdn.fontshare.com/wf/NHPGVFYUXYXE33DZ75OIT4JFGHITX5PE/PSUTMASCDJTVPERDYJZPN23BVUFUCQIF/J64QX5IPOHK56I2KYUNBQ5M2XWZEYKYX.woff2",
+    "use": "Satoshi by Indian Type Foundry, Fontshare ITF Free Font License."
+  },
+  {
+    "local": "images/cinema-13.jpg",
+    "source": "https://www.theartofcinema.xyz/images/11.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "images/cinema-14.jpg",
+    "source": "https://www.theartofcinema.xyz/images/12.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "images/cinema-15.jpg",
+    "source": "https://www.theartofcinema.xyz/images/13.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "images/cinema-16.jpg",
+    "source": "https://www.theartofcinema.xyz/images/14.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  },
+  {
+    "local": "images/cinema-17.jpg",
+    "source": "https://www.theartofcinema.xyz/images/15.jpeg",
+    "use": "Cinematic reference still; not team work or a member portrait."
+  }
+]
